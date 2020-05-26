@@ -65,7 +65,7 @@ class Mapping
     get_mapping_words([@map_words[0..3], @map_words[4..6], @map_words[7..9]])
     @converted_words << (@map_words.shift.product(*@map_words).map(&:join) & @dictionary_words).join(', ') 
     @converted_words.uniq!
-    @converted_words.reject! { |x| x.join.length < 10 if x.is_a?(Array) || x.length < 10 }
+    @converted_words.reject! { |x| x.join.length < 10 if (x.is_a?(Array) || x.length < 10) && !x.empty? }
     @converted_words
   end
 
